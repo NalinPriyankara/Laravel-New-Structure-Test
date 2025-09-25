@@ -1,46 +1,16 @@
 <?php
+
 namespace App\Repositories\All\Author;
 
 use App\Models\Author;
+use App\Repositories\Base\BaseRepository;
 
-class AuthorRepository implements AuthorInterface
+class AuthorRepository extends BaseRepository implements AuthorInterface
 {
-    public function all()
+    public function __construct(Author $model)
     {
-        return Author::all();
+        parent::__construct($model);
     }
 
-
-    public function paginate(int $perPage = 5)
-    {
-        return Author::paginate($perPage);
-    }
-
-
-    public function find(int $id): ?Author
-    {
-        return Author::find($id);
-    }
-
-
-    public function create(array $data): Author
-    {
-        return Author::create($data);
-    }
-
-
-    public function update(int $id, array $data): bool
-    {
-        $author = $this->find($id);
-        if (! $author) return false;
-        return $author->update($data);
-    }
-
-
-    public function delete(int $id): bool
-    {
-        $author = $this->find($id);
-        if (! $author) return false;
-        return $author->delete();
-    }
+    // Add Author-specific methods if needed
 }

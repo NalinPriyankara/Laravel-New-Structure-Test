@@ -1,37 +1,27 @@
 <?php
+
 namespace App\Repositories\All\Book;
 
 use App\Models\Book;
+use App\Repositories\Base\BaseRepository;
 use App\Repositories\All\Book\BookInterface;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
-class BookRepository implements BookInterface
+class BookRepository extends BaseRepository implements BookInterface
 {
-    public function all()
+    public function __construct(Book $model)
     {
-        return Book::with('author')->get(); // eager load author
+        parent::__construct($model);
     }
 
-    public function find($id)
+    public function all(): Collection
     {
-        return Book::with('author')->findOrFail($id);
+        return $this->model->with('author')->get();
     }
 
-    public function create(array $data)
+    public function find(int $id): ?Model
     {
-        return Book::create($data);
-    }
-
-    public function update($id, array $data)
-    {
-        $book = Book::findOrFail($id);
-        $book->update($data);
-        return $book;
-    }
-
-    public function delete($id)
-    {
-        $book = Book::findOrFail($id);
-        $book->delete();
-        return true;
+        return $this->model->with('author')->find($id);
     }
 }

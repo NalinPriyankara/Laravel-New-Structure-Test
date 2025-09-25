@@ -3,36 +3,25 @@
 namespace App\Repositories\All\Review;
 
 use App\Models\Review;
+use App\Repositories\Base\BaseRepository;
 use App\Repositories\All\Review\ReviewInterface;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
-class ReviewRepository implements ReviewInterface
+class ReviewRepository extends BaseRepository implements ReviewInterface
 {
-    public function all()
+    public function __construct(Review $model)
     {
-        return Review::with('book')->get(); // eager load book
+        parent::__construct($model);
     }
 
-    public function find($id)
+    public function all(): Collection
     {
-        return Review::with('book')->findOrFail($id);
+        return $this->model->with('book')->get();
     }
 
-    public function create(array $data)
+    public function find(int $id): ?Model
     {
-        return Review::create($data);
-    }
-
-    public function update($id, array $data)
-    {
-        $review = Review::findOrFail($id);
-        $review->update($data);
-        return $review;
-    }
-
-    public function delete($id)
-    {
-        $review = Review::findOrFail($id);
-        $review->delete();
-        return true;
+        return $this->model->with('book')->find($id);
     }
 }

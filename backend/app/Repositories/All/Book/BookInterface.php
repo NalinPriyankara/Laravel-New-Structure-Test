@@ -1,12 +1,12 @@
 <?php
+
 namespace App\Repositories\All\Book;
 
-interface BookInterface
-{
-    public function all();
-    public function find(int $id);
-    public function create(array $data);
-    public function update(int $id, array $data);
-    public function delete(int $id);
+use App\Repositories\Base\EloquentRepositoryInterface;
 
+interface BookInterface extends EloquentRepositoryInterface
+{
+    // Book-specific methods here if needed
+    // Example:
+    // public function findByAuthor(int $authorId);
 }

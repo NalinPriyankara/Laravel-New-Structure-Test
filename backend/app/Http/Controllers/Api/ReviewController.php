@@ -53,7 +53,8 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        $this->reviews->delete($id);
-        return response()->json(null, 204);
+        $deleted = $this->reviews->delete($id);
+        if (! $deleted) return response()->json(['message' => 'Not found'], 404);
+        return response()->json(['message' => 'Deleted']);
     }
 }

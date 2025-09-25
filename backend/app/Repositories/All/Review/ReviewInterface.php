@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Repositories\All\Review;
 
-interface ReviewInterface
+use App\Repositories\Base\EloquentRepositoryInterface;
+
+interface ReviewInterface extends EloquentRepositoryInterface
 {
-    public function all();
-    public function find(int $id);
-    public function create(array $data);
-    public function update(int $id, array $data);
-    public function delete(int $id);
+    // Review-specific methods here if needed
+    // Example:
+    // public function findByBook(int $bookId);
 }
