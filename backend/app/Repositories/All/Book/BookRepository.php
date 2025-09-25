@@ -1,8 +1,8 @@
 <?php
-namespace App\Repositories\Book;
+namespace App\Repositories\All\Book;
 
 use App\Models\Book;
-use App\Repositories\Book\BookInterface;
+use App\Repositories\All\Book\BookInterface;
 
 class BookRepository implements BookInterface
 {

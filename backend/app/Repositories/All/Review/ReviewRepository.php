@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Review;
+namespace App\Repositories\All\Review;
 
 use App\Models\Review;
-use App\Repositories\Review\ReviewInterface;
+use App\Repositories\All\Review\ReviewInterface;
 
 class ReviewRepository implements ReviewInterface
 {

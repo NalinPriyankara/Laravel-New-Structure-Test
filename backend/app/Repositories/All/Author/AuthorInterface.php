@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\Author;
+namespace App\Repositories\All\Author;
 
 use App\Models\Author;
 

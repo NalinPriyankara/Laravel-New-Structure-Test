@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Review\ReviewInterface;
-use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;
+use App\Repositories\All\Review\ReviewInterface;
 
 class ReviewController extends Controller
 {
@@ -25,7 +25,7 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ReviewRequest $request)
     {
         $review = $this->reviews->create($request->all());
         return response()->json($review, 201);
@@ -42,7 +42,7 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(ReviewRequest $request, $id)
     {
         $review = $this->reviews->update($id, $request->all());
         return response()->json($review);
